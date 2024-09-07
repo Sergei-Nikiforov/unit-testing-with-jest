@@ -56,7 +56,7 @@ describe('RegisterHandler test suite', ()=>{
         await sut.handleRequest();
 
         expect(responseMock.statusCode).toBe(HTTP_CODES.CREATED);
-        expect(responseMock.writeHead).toBeCalledWith(
+        expect(responseMock.writeHead).toHaveBeenCalledWith(
             HTTP_CODES.CREATED,
             { 'Content-Type': 'application/json' }
         )
