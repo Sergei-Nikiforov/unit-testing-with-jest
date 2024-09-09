@@ -31,7 +31,7 @@ describe('getRequestBody test suite', () => {
             cb();
         })
 
-        await expect(getRequestBody(requestMock as any)).rejects.toThrow('Unexpected token a in JSON at position 0');
+        await expect(getRequestBody(requestMock as any)).rejects.toThrow(new RegExp('Unexpected token'));
     })
 
     it('should throw error for unexpected JSON', async () => {

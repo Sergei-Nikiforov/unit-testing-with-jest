@@ -11,7 +11,7 @@ export async function getRequestBody(request: IncomingMessage): Promise<any> {
             try {
                 resolve(JSON.parse(body));
             } catch (jsonError) {
-                reject(jsonError)
+                reject(jsonError);
             }
         });
         request.on('error', (error: any) => {

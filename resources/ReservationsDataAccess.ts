@@ -1,5 +1,5 @@
-import { Reservation } from "../model/ReservationModel";
-import { DataBase } from "./DataBase";
+import { Reservation } from "../src/app/server_app/model/ReservationModel";
+import { DataBase } from "../src/app/server_app/data/DataBase";
 
 export class ReservationsDataAccess {
 
