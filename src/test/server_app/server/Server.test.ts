@@ -108,10 +108,20 @@ describe('Server test suite', () => {
     })
 
     it('should stop the server if started', async () => {
+        serverMock.close.mockImplementationOnce((cb: Function) => cb());
+
         await sut.startServer();
         await sut.stopServer();
 
         expect(serverMock.close).toHaveBeenCalledTimes(1);
     })
+
+    it('should fail to close the server if any error occurs', async () => {
+        const someError = new Error('some error');
+
+        serverMock.close.mockImplementationOnce((cb: Function) => cb(someError));
+        await sut.startServer();
+        await expect(sut.stopServer()).rejects.toThrow(someError);
+    }); 
 
 })

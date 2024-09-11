@@ -14,13 +14,8 @@ export class Server {
 
     public async startServer() {
         this.server = createServer(async (req, res) => {
-            // console.log(`Got request from ${req.headers['user-agent']}`);
-            // console.log(`Got request for ${req.url}`);
             await this.handleRequest(req, res);
             res.end();
-
-            console.log('times called res.end!!');
-            console.log((res.end as any as jest.Mock).mock.calls.length);
         });
         this.server.listen(8080);
         console.log('server started')
@@ -45,7 +40,7 @@ export class Server {
             }
         } catch (error) {
             response.writeHead(HTTP_CODES.INTERNAL_SERVER_ERROR, JSON.stringify(`Internal server error: ${error.message}`))
-            console.log(error);
+//            console.log(error);
         }
     }
 
@@ -64,7 +59,6 @@ export class Server {
                     if (err) {
                         reject(err);
                     } else {
-                        console.log('server closed');
                         resolve();
                     }
                 });
